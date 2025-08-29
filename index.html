@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Event</title>
+</head>
+<body>
+    <h2>REGISTRATION FOR AN EVENT</h2>
+    <form action="./Registration.java" method="get">
+        <table>
+            <tr><td>Name </td><td><input type="text" name="name" id="name" title="Enter your full name" placeholder="Full Name"></td></tr>
+            <tr><td>Email </td><td><input type="text" name="email" id="email" title="Enter your email address" placeholder="Email"></td></tr>
+            <tr><td>Phone </td><td><input type="text" name="phone" id="phone" title="Enter your phone number" placeholder="Phone Number"></td></tr>
+            <tr>
+                <td>ATTENDEES</td>
+                <td>
+                    <select name="attendeesno" id="attendeesno" title="Select number of attendees">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td><input type="submit" value="Register"></td></tr>
+        </table>
+    </form>
+</body>
+</html>
