@@ -138,3 +138,49 @@ Follow these steps to try my project on your computer. You’ll need **Git** and
 This project taught me how to use Terraform to build things with code and Git to keep my work organized. The best practices make sure my code is safe, clear, and easy to share. I can now build bigger cloud projects, like storage or servers, using these steps!
 
 If you want to try it, follow the steps above or ask me for help. Happy coding!
+
+## Vercel deployment & CI hints
+
+If you connected this repository to Vercel and want Vercel to serve or build the files inside `iac-project/`, here are two safe options:
+
+1) Use the repository-level `vercel.json` (already added in the repo root)
+    - The included `vercel.json` routes requests to `iac-project/` and uses the `@vercel/static` builder so files in `iac-project` are served as static assets.
+    - No extra build command is required for static files. This is the simplest option if you just want to publish documentation or static content from this folder.
+
+2) Configure the project in the Vercel dashboard
+    - In your Vercel Project settings set the "Root Directory" to `iac-project/` (if you prefer per-project setting).
+    - Build Command: leave blank or use a simple command if you have a build step.
+    - Output Directory: leave blank for static serving, or set it to the folder that contains the generated site if you add a static generator.
+
+Notes and CI hints
+- Do NOT commit Terraform state files into source control (`*.tfstate`, `*.tfstate.backup`). This repo already ignores them via `iac-project/.gitignore` but if you ever see `terraform.tfstate` in the repo, remove it and move to remote state.
+- Prefer a remote Terraform backend (Terraform Cloud, S3 with locking, Azure/GCP storage) for multi-user work.
+- If you want Vercel to run a CI step that invokes Terraform (not typical), consider using a separate pipeline (GitHub Actions, GitLab CI, or a dedicated runner) because Vercel builds are intended for web apps and static sites. Example GitHub Actions job (in .github/workflows/terraform.yml):
+
+```yaml
+name: Terraform
+
+on:
+   push:
+      paths:
+         - 'iac-project/**'
+
+jobs:
+   terraform:
+      runs-on: ubuntu-latest
+      steps:
+         - uses: actions/checkout@v4
+            with:
+               path: repo
+         - name: Set up Terraform
+            uses: hashicorp/setup-terraform@v2
+         - name: Terraform Init
+            working-directory: repo/iac-project
+            run: terraform init
+         - name: Terraform Validate
+            working-directory: repo/iac-project
+            run: terraform validate
+
+```
+
+That keeps infrastructure runs in CI designed for infra (and not in Vercel builds).
