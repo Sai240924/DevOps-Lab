@@ -17,9 +17,9 @@
 
       <h2>Prerequisites</h2>
       <ul>
-        <li>Ensure AWS credentials are set as repository secrets: <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code></li>
-        <li>Configure a GitHub Environment named <code>terraform-apply</code> with required reviewers for approval</li>
+        <li>Configure a GitHub Environment named <code>terraform-apply</code> with required reviewers for approval (optional, for security)</li>
         <li>Install Terraform locally (optional, for local testing)</li>
+        <li>Ensure the repository is connected to Vercel for hosting the generated outputs page</li>
       </ul>
 
       <h2>Generate and View Terraform Outputs</h2>
@@ -46,10 +46,11 @@
 
       <h2>Troubleshooting</h2>
       <ul>
-        <li><strong>Workflow fails:</strong> Check the job logs in GitHub Actions for errors. Ensure AWS secrets are correctly set and the environment is approved.</li>
+        <li><strong>Workflow fails:</strong> Check the job logs in GitHub Actions for errors. Ensure the environment is approved if configured.</li>
         <li><strong>No outputs page:</strong> The <code>output.html</code> file is generated after a successful workflow run. If missing, re-run the workflow.</li>
         <li><strong>Permission issues:</strong> Ensure you have write access to the repository and the environment reviewers approve the run.</li>
-        <li><strong>Local issues:</strong> Verify Terraform is installed and AWS credentials are configured locally.</li>
+        <li><strong>Local issues:</strong> Verify Terraform is installed.</li>
+        <li><strong>Vercel deployment:</strong> Ensure the repository is connected to Vercel and the <code>vercel.json</code> is configured to serve files from <code>iac-project/</code>.</li>
       </ul>
 
       <p><strong>Note:</strong> The outputs page will be available after your first successful workflow run or local apply.</p>
