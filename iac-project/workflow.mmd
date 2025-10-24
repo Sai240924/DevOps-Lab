@@ -1,0 +1,36 @@
+graph TD
+    subgraph "Development Environment"
+        A[Developer's Computer] --> B[Local Git Repository]
+        B -- "1. Write & Test" --> C[main.tf]
+        C -- "2. Initialize Git & Commit" --> D[Feature Branch]
+    end
+
+    subgraph "Version Control"
+        D -- "3. Push Changes" --> E[GitHub Repository]
+        E -- "4. Pull Request" --> F[Code Review]
+        F -- "5. Merge" --> G[Main Branch]
+    end
+
+    subgraph "Infrastructure Deployment"
+        G -- "6. Pull Latest" --> H[Local Environment]
+        H -- "7. terraform init" --> I[Initialize Terraform]
+        I -- "8. terraform plan" --> J[Review Plan]
+        J -- "9. terraform apply" --> K[Apply Changes]
+    end
+
+    subgraph "Infrastructure Resources"
+        K --> L[Random Pet Provider]
+        L --> M[Pet Name Output]
+    end
+
+    subgraph "Best Practices"
+        N[No Secrets in Code]
+        O[Clear Documentation]
+        P[Automated Testing]
+        Q[Branching Strategy]
+    end
+
+    style N fill:#f9f,stroke:#333,stroke-width:2px
+    style O fill:#f9f,stroke:#333,stroke-width:2px
+    style P fill:#f9f,stroke:#333,stroke-width:2px
+    style Q fill:#f9f,stroke:#333,stroke-width:2px
