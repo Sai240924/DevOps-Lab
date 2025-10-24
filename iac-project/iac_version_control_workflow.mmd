@@ -1,32 +1,22 @@
 ```mermaid
 graph TD
-    A[Developer's Computer] -->|1. Write IaC Code (Terraform)| B[Local Git Repository]
-    B -->|2. Initialize Git (git init)| C[Create main.tf]
-    C -->|3. Commit Changes (git commit)| D[Local Commit History]
-    D -->|4. Create Branch (git checkout -b feature)| E[Feature Branch]
-    E -->|5. Add/Modify Code| F[Commit to Branch]
-    F -->|6. Push to GitHub (git push)| G[GitHub Repository]
-    G -->|7. Create Pull Request| H[Code Review]
-    H -->|8. Merge to Main| I[Main Branch on GitHub]
-    I -->|9. Pull Main Locally (git pull)| A
-    A -->|10. Run Terraform (init, plan, apply)| J[Cloud Infrastructure]
-    J -->|11. Output (e.g., Pet Name)| K[Verify Result]
-    G -->|12. Optional: GitHub Actions (Automated Tests)| L[Run terraform plan]
-    L -->|13. Test Results| H
+    A[Developer's Computer] -->|1. Write Terraform Code| B[Local Git Repository]
+    B -->|2. Git Commit| C[Feature Branch]
+    C -->|3. Push to GitHub| D[GitHub Repository]
+    D -->|4. Pull Request & Review| E[Main Branch]
+    E -->|5. Pull Locally| A
+    A -->|6. Run Terraform Apply| F[Cloud Infrastructure]
+    D -->|7. Automated Tests| G[Test Results]
 
     subgraph Best Practices
-        P1[Clear Commit Messages]
-        P2[No Secrets in Code]
-        P3[Organized Folders]
-        P4[Documentation (README)]
-        P5[Branching Strategy]
-        P6[Automated Testing]
+        P1[Clear Commits]
+        P2[No Secrets]
+        P3[Branching]
+        P4[Documentation]
     end
 
-    D --> P1
-    C --> P2
-    B --> P3
-    G --> P4
-    E --> P5
-    L --> P6
+    B --> P1
+    B --> P2
+    C --> P3
+    D --> P4
 ```
