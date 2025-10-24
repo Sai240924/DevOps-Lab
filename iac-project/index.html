@@ -14,13 +14,45 @@
     <div class="card">
       <h1>IaC Project</h1>
       <p>Welcome to the Terraform Infrastructure as Code Project.</p>
-      <p>To view Terraform outputs:</p>
+
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Ensure AWS credentials are set as repository secrets: <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code></li>
+        <li>Configure a GitHub Environment named <code>terraform-apply</code> with required reviewers for approval</li>
+        <li>Install Terraform locally (optional, for local testing)</li>
+      </ul>
+
+      <h2>Generate and View Terraform Outputs</h2>
+      <p>Follow these steps to generate and view the Terraform outputs:</p>
       <ol>
-        <li>Go to <a href="https://github.com/Sai240924/DevOps-Lab/actions/workflows/terraform-publish-output.yml">GitHub Actions → Terraform Apply and Publish Output</a></li>
-        <li>Click "Run workflow" and set action to "apply"</li>
-        <li>After approval and successful run, refresh this page and click: <a href="output.html">View Terraform Outputs</a></li>
+        <li>Navigate to <a href="https://github.com/Sai240924/DevOps-Lab/actions/workflows/terraform-publish-output.yml" target="_blank" rel="noopener">GitHub Actions → Terraform Apply and Publish Output</a></li>
+        <li>Click the "Run workflow" button</li>
+        <li>In the input field, set <code>action</code> to <code>apply</code></li>
+        <li>Click "Run workflow" to start the job</li>
+        <li>Wait for environment approval (if configured) and monitor the job progress</li>
+        <li>Once the workflow completes successfully, refresh this page</li>
+        <li>Click <a href="output.html">View Terraform Outputs</a> to see the generated outputs</li>
       </ol>
-      <p><strong>Note:</strong> The outputs page will be available after your first successful workflow run.</p>
+
+      <h2>Local Alternative (If Workflow Fails)</h2>
+      <p>If the GitHub Actions workflow fails, you can generate outputs locally:</p>
+      <ol>
+        <li>Clone the repository: <code>git clone https://github.com/Sai240924/DevOps-Lab.git</code></li>
+        <li>Navigate to the project: <code>cd DevOps-Lab/iac-project</code></li>
+        <li>Initialize Terraform: <code>terraform init</code></li>
+        <li>Apply the configuration: <code>terraform apply</code> (type <code>yes</code> when prompted)</li>
+        <li>View outputs: <code>terraform output -json</code></li>
+      </ol>
+
+      <h2>Troubleshooting</h2>
+      <ul>
+        <li><strong>Workflow fails:</strong> Check the job logs in GitHub Actions for errors. Ensure AWS secrets are correctly set and the environment is approved.</li>
+        <li><strong>No outputs page:</strong> The <code>output.html</code> file is generated after a successful workflow run. If missing, re-run the workflow.</li>
+        <li><strong>Permission issues:</strong> Ensure you have write access to the repository and the environment reviewers approve the run.</li>
+        <li><strong>Local issues:</strong> Verify Terraform is installed and AWS credentials are configured locally.</li>
+      </ul>
+
+      <p><strong>Note:</strong> The outputs page will be available after your first successful workflow run or local apply.</p>
     </div>
   </body>
 </html>
