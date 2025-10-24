@@ -1,0 +1,44 @@
+IaC Version Control Workflow for DevOps Project
+=============================================
+
+[Developer's Computer]
+   |
+   | 1. Write Terraform code (main.tf)
+   v
+[Local Git Repository]
+   | - Best Practice: Organized Folders
+   | - Best Practice: No Secrets in Code
+   |
+   | 2. Initialize Git & Commit
+   v
+[Feature Branch]
+   | - Best Practice: Branching Strategy
+   | - Best Practice: Clear Commit Messages
+   |
+   | 3. Push to GitHub
+   v
+[GitHub Repository]
+   | - Best Practice: Documentation (README)
+   |
+   | 4. Create Pull Request & Review
+   v
+[Main Branch]
+   |
+   | 5. Pull to Computer
+   v
+[Developer's Computer]
+   |
+   | 6. Run Terraform (init, plan, apply)
+   v
+[Cloud Infrastructure]
+   | - Output (e.g., Pet Name)
+   |
+   | 7. Verify Result
+   v
+[Done!]
+
+[GitHub Repository] --> [Automated Tests] - Best Practice: Automated Testing
+                    |        |
+                    | 8. Test Results
+                    v
+                 [Main Branch]

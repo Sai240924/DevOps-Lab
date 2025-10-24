@@ -60,17 +60,14 @@ IaC Version Control Workflow
 [Developer's Computer]
    |
    | 6. Run Terraform Apply
+   |    - Output (Pet Name)
    v
-[Cloud Infrastructure]
-   | - Output (Pet Name)
-   |
-   | 7. Verify Result
-   v
+
 [Done!]
 
 [GitHub Repository] --> [Automated Tests] - Automated Testing
                     |        |
-                    | 8. Test Results
+                    | 7. Test Results
                     v
                  [Main Branch]
 ```
