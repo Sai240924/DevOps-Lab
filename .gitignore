@@ -1,0 +1,4 @@
+# Ignore the local iac project directory (keeps it locally but removes it from the repo/index)
+iac-project/
+
+# You can add other patterns below
