@@ -11,5 +11,5 @@ provider "random" {}
 resource "random_pet" "server" {}
 output "pet_name" {
   value = random_pet.server.id
-  description = "My fun pet name"
+  description = "My pet name is"
 }
