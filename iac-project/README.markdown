@@ -183,4 +183,14 @@ jobs:
 
 ```
 
+## Approval for apply runs (recommended)
+
+To prevent accidental or unauthorized `terraform apply` runs, configure a GitHub Environment and require approvals:
+
+1. In GitHub go to: Settings → Environments → New environment. Name it `terraform-apply` (the workflow uses this name).
+2. Add required reviewers (users or teams) who must approve runs that target this environment.
+3. Optionally set secrets scoped to the environment for provider credentials.
+
+With this in place, any workflow job that sets `environment: terraform-apply` will pause and require an approval from one of the configured reviewers before `apply` steps run. This is a recommended safety step for production infra.
+
 That keeps infrastructure runs in CI designed for infra (and not in Vercel builds).

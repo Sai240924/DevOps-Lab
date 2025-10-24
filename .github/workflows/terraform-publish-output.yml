@@ -13,6 +13,8 @@ on:
 jobs:
   apply-and-publish:
     runs-on: ubuntu-latest
+    # Require environment approval for applies. Create environment 'terraform-apply' in repo settings and add reviewers.
+    environment: terraform-apply
     steps:
       - name: Checkout
         uses: actions/checkout@v4
