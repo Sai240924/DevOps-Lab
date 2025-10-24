@@ -50,6 +50,8 @@ jobs:
   apply:
     name: Terraform Apply (manual)
     if: github.event_name == 'workflow_dispatch'
+    # Require environment approval before running apply (create environment 'terraform-apply' in repo settings and add required reviewers)
+    environment: terraform-apply
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
